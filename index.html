@@ -436,13 +436,6 @@
                 <input type="number" id="conf-WEB" class="w-12 h-8 text-center rounded-lg text-xs font-bold" onchange="updateGlobalConfig('WEB', this.value)" onclick="event.stopPropagation()" disabled>
             </button>
             
-<div class="grid grid-cols-2 gap-2">
-    
-    <button onclick="downloadOneIPs('${key}')" class="col-span-2 bg-slate-700 hover:bg-slate-600 text-slate-200 py-2 rounded-lg font-bold text-xs transition-colors border border-slate-600 flex justify-center items-center gap-2">
-        DOWNLOAD FILE ⬇️
-    </button>
-</div>
-			
             <button onclick="selectPlatform('SELENIUM')" id="btn-SELENIUM" class="plat-btn glass-card p-6 rounded-3xl font-black uppercase flex justify-between items-center group hover:scale-[1.02] active:scale-95">
                 <div class="super-only plat-status-toggle" onclick="togglePlatVisibility('SELENIUM', event)" title="Toggle Visibility"></div>
                 <span class="text-lg italic group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">SELENIUM</span>
@@ -883,6 +876,7 @@
                     <div class="flex justify-between items-center mb-4 border-b border-slate-500/10 pb-3">
                         <div class="flex items-center gap-2">
                             <span class="bg-slate-900 dark:bg-slate-900 text-white text-[12px] font-black px-3 py-1 rounded-full uppercase italic shadow-md">Deploy ${i+1}</span>
+                            <button onclick="downloadIPs(${i})" class="viewer-only-btn hidden bg-purple-600 hover:bg-purple-500 text-white text-[10px] px-3 py-1 rounded-full font-black uppercase shadow-sm active:scale-95 transition-all">⬇️ TXT</button>
                             <button onclick="copyIPs(${i}, this)" class="viewer-only-btn hidden bg-blue-600 text-white text-[12px] px-3 py-1 rounded-full font-black uppercase shadow-sm active:scale-95 transition-all hover:bg-blue-500">Copy IPs</button>
                             <span class="ip-count text-[12px] font-black text-blue-700 dark:text-blue-300 bg-blue-500/10 dark:bg-blue-900/30 px-3 py-1 rounded-full border border-blue-500/20">${ipCount} IPS</span>
                         </div>
@@ -1157,25 +1151,28 @@
             });
         }
 		
-
-				function downloadOneIPs(index) {
-					const textarea = document.getElementById(`ips-${index}`);
-					const textContent = textarea.value;
-					const filename = `ips${index}ems3.txt`;
-				
-					const blob = new Blob([textContent], { type: 'text/plain' });
-					const url = window.URL.createObjectURL(blob);
-					const a = document.createElement('a');
-					a.href = url;
-					a.download = filename;
-					document.body.appendChild(a);
-					a.click();
-					window.URL.revokeObjectURL(url);
-					document.body.removeChild(a);
-				}
-
-		
-		
+        function downloadIPs(index) {
+            const textarea = document.getElementById(`ips-${index}`);
+            const text = textarea.value.trim();
+            if (!text) {
+                alert("No IPs to download");
+                return;
+            }
+            
+            // Generate filename: ips1ems3.txt, ips2ems3.txt, etc.
+            const filename = `ips${index + 1}ems3.txt`;
+            
+            const element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+            
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            
+            element.click();
+            
+            document.body.removeChild(element);
+        }
     </script>
 </body>
 </html>
