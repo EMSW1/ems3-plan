@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMS6 | PLAN</title>
+    <title>EMS3 | PLAN</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
@@ -368,7 +368,7 @@
                 <div class="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl mx-auto mb-6 flex items-center justify-center shadow-xl ring-4 ring-blue-500/20">
                     <span class="text-white text-3xl font-black italic">W</span>
                 </div>
-                <h2 class="text-3xl font-black mb-2 uppercase tracking-tighter text-slate-800 dark:text-white">EMS6 ACCESS</h2>
+                <h2 class="text-3xl font-black mb-2 uppercase tracking-tighter text-slate-800 dark:text-white">EMS3 ACCESS</h2>
                 <input type="password" id="accessKey" onkeypress="if(event.key==='Enter') checkAccess()" placeholder="••••••••" class="w-full p-4 border-none rounded-2xl mb-4 text-center font-bold outline-none focus:ring-2 focus:ring-blue-500 transition-all text-slate-900 dark:text-white placeholder-slate-400">
                 <button onclick="checkAccess()" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white p-4 rounded-2xl font-black uppercase shadow-lg transform hover:scale-105 transition-all">Unlock</button>
             </div>
@@ -390,7 +390,7 @@
         <header class="glass-card p-6 rounded-[2rem] flex justify-between items-center relative overflow-hidden group">
             <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div class="relative z-10">
-                <h1 class="text-2xl font-black italic uppercase tracking-tighter drop-shadow-lg text-slate-800 dark:text-white">EMS6 <span class="text-blue-600 dark:text-blue-400">PLAN</span></h1>
+                <h1 class="text-2xl font-black italic uppercase tracking-tighter drop-shadow-lg text-slate-800 dark:text-white">EMS3 <span class="text-blue-600 dark:text-blue-400">PLAN</span></h1>
                 <p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">REPORTING SYSTEM</p>
             </div>
             <div class="flex items-center gap-3 relative z-10">
@@ -519,12 +519,10 @@
                     <div class="admin-only w-1/3">
                         <label class="block text-[12px] font-black uppercase mb-2 italic text-blue-600 dark:text-blue-300">EDITOR</label>
                         <select id="editorSelect" onchange="checkChanges()" class="w-full p-3 border-none rounded-2xl font-black text-[10px] outline-none hover:bg-white/10 transition-colors cursor-pointer">
-                            <option value="HAKIM DRYGHAL">HAKIM DRYGHAL</option>
-                            <option value="HICHAM EL BOUAZAOUI">HICHAM EL BOUAZAOUI</option>
-                            <option value="YASSINE EL HADAD">YASSINE EL HADAD</option>
-                            <option value="YOUNES BOUASLA">YOUNES BOUASLA</option>
-                            <option value="IMAD KEJEIOU">IMAD KEJEIOU</option>
-							<option value="ISMAIL ABERAOUZ">ISMAIL ABERAOUZ</option>
+                             <option value="MOUAD LAHCRECH">MOUAD LAHCRECH</option>
+                            <option value="ADNANE EL ASSAM">ADNANE EL ASSAM</option>
+                            <option value="AYOUB BEN CHAAYAB">AYOUB BEN CHAAYAB</option>
+                            <option value="AZIZ BOULEHJOUR">AZIZ BOULEHJOUR</option>
                         </select>
                     </div>
                     <div class="admin-only w-1/4">
@@ -557,16 +555,15 @@
 
     <script>
         const CONFIG = {
-            adminKey: "ems6@2026", 
-            superKey: "emsw@2026..",
+            authUrl: "https://ems3-plan.alamiuness.workers.dev",
             firebase: { 
-                apiKey: "AIzaSyB_aylTk3hW60y3Kewlbb4B76J3f-lx0qE", 
-                authDomain: "ems6-reporting.firebaseapp.com", 
-                databaseURL: "https://ems6-reporting-default-rtdb.firebaseio.com", 
-                projectId: "ems6-reporting",
-                storageBucket: "ems6-reporting.firebasestorage.app",
-                messagingSenderId: "1091962206156",
-                appId: "1:1091962206156:web:0c6c970e222403ab1f8f69",
+                apiKey: "AIzaSyBp5t2-Xlxj6_XiDi6y09zbOkHYLe2X9Ls", 
+                authDomain: "ems3-reporting.firebaseapp.com", 
+                databaseURL: "https://ems3-reporting-default-rtdb.firebaseio.com", 
+                projectId: "ems3-reporting",
+                storageBucket: "ems3-reporting.firebasestorage.app",
+                messagingSenderId: "696098202646",
+                appId: "1:696098202646:web:8abbc6257a2982549c0137",
                 measurementId: "G-JFCVVTHMNR"
             },
             telegram: { 
@@ -584,12 +581,12 @@
         function toggleDarkMode() {
             document.documentElement.classList.toggle('dark');
             const isDark = document.documentElement.classList.contains('dark');
-            localStorage.setItem('ems6_darkmode', isDark);
+            localStorage.setItem('ems3_darkmode', isDark);
         }
 
         window.onload = async () => {
             // Apply dark mode immediately based on preference or local storage
-            if(localStorage.getItem('ems6_darkmode') === 'true' || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            if(localStorage.getItem('ems3_darkmode') === 'true' || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 document.documentElement.classList.add('dark');
             } else {
                  // Default to dark mode as requested, but user can switch
@@ -600,7 +597,7 @@
             generateSpaceEffect();
 
             const params = new URLSearchParams(window.location.search);
-            const key = localStorage.getItem('ems6_key');
+            const savedRole = localStorage.getItem('ems3_role');
             const isViewMode = params.get('mode') === 'view';
 
             if (isViewMode) {
@@ -613,8 +610,8 @@
                 return; 
             }
 
-            if(key === CONFIG.adminKey || key === CONFIG.superKey) {
-                userRole = (key === CONFIG.superKey) ? "super" : "admin";
+            if(savedRole === 'admin' || savedRole === 'super') {
+                userRole = savedRole;
                 document.body.classList.add(userRole + '-mode');
                 await initApp();
             } else {
@@ -660,7 +657,7 @@
             
             // Fetch Global Stats & Visibility
             await loadGlobalStats();
-            const visSnap = await db.ref('ems6/config/visibility').once('value');
+            const visSnap = await db.ref('ems3/config/visibility').once('value');
             if(visSnap.exists()) { platVisibility = {...platVisibility, ...visSnap.val()}; }
             applyVisibilityToUI();
 
@@ -687,7 +684,7 @@
                 document.getElementById('rotDetailText').readOnly = true;
             }
 
-            const confSnap = await db.ref('ems6/config/boites').once('value');
+            const confSnap = await db.ref('ems3/config/boites').once('value');
             if(confSnap.exists()) {
                 const loaded = confSnap.val();
                 boitesConfig = {...boitesConfig, ...loaded};
@@ -714,7 +711,7 @@
         }
 
         async function loadGlobalStats() {
-            const snap = await db.ref('ems6/global_stats').once('value');
+            const snap = await db.ref('ems3/global_stats').once('value');
             if(snap.exists()) {
                 globalStatsData = snap.val();
                 document.getElementById('glb_rdps').value = globalStatsData.rdps || '';
@@ -749,7 +746,7 @@
             applyVisibilityToUI();
             
             // Sync with Firebase
-            await db.ref('ems6/config/visibility').set(platVisibility);
+            await db.ref('ems3/config/visibility').set(platVisibility);
         }
 
         async function selectPlatform(p) {
@@ -823,7 +820,7 @@
             stats.classList.remove('content-hidden');
             mainCont.classList.remove('content-hidden');
 
-            const snap = await db.ref(`ems6/plans/${p}/current`).once('value');
+            const snap = await db.ref(`ems3/plans/${p}/current`).once('value');
             stateData = snap.val() || { deploys: [], stats: {}, filter: "", editor: ""};
             if(!stateData.deploys) stateData.deploys = [];
             if(!stateData.stats) stateData.stats = {};
@@ -986,7 +983,7 @@
                     pause: document.getElementById('glb_pause').value,
                     proxy: document.getElementById('glb_proxy').value
                 };
-                await db.ref('ems6/global_stats').set(newGlobal);
+                await db.ref('ems3/global_stats').set(newGlobal);
             }
             
             // If no platform is selected, we stop here (after saving global)
@@ -1023,17 +1020,17 @@
             }
             // ----------------------------------------------
 
-            await db.ref(`ems6/plans/${currentPlatform}/current`).set({ deploys, filter, stats, editor: editorName, updatedAt: new Date().toLocaleString() });
+            await db.ref(`ems3/plans/${currentPlatform}/current`).set({ deploys, filter, stats, editor: editorName, updatedAt: new Date().toLocaleString() });
 
             // --- MODIFIED TELEGRAM SEND LOGIC ---
             if(forceTelegram) {
-                const publicUrl = "https://ems6-plan.pages.dev/";
+                const publicUrl = "https://ems3-plan.pages.dev/";
                 const viewLink = `${publicUrl}?mode=view&plat=${currentPlatform}&target=true`;
                 const telegramMsg = `⚠️ <b>STOPPED: #${currentPlatform}</b>\n` + `👤 <b>BY : ${editorName}</b>\n` + `━━━━━━━━━━━━━━━\n` + `🚫 <b>ALL DEPLOYS REMOVED</b>\n` + `━━━━━━━━━━━━━━━\n` + `🔗 <a href="${viewLink}"><b>VIEW PLAN</b></a>`;
                 try { await fetch(`https://api.telegram.org/bot${CONFIG.telegram.token}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: CONFIG.telegram.chatId, text: telegramMsg, parse_mode: 'HTML' }) }); } catch (e) { console.error("Telegram Error:", e); }
             }
             else if(logChanges.length > 0) {
-                const publicUrl = "https://ems6-plan.pages.dev/";
+                const publicUrl = "https://ems3-plan.pages.dev/";
                 const viewLink = `${publicUrl}?mode=view&plat=${currentPlatform}&target=true`;
                 let changesText = ""; logChanges.forEach(l => { changesText += "• " + l + "\n"; });
                 const telegramMsg = `🔄 <b>UPDATE: #${currentPlatform}</b>\n` + `👤 <b>BY : ${editorName}</b>\n` + `━━━━━━━━━━━━━━━\n` + `📝 <b>CHANGES:</b>\n` + `${changesText}` + `━━━━━━━━━━━━━━━\n` + `🔗 <a href="${viewLink}"><b>VIEW MODIFICATIONS</b></a>`;
@@ -1055,7 +1052,7 @@
                 pause: document.getElementById('glb_pause').value,
                 proxy: document.getElementById('glb_proxy').value
             };
-            await db.ref('ems6/global_stats').set(newGlobal);
+            await db.ref('ems3/global_stats').set(newGlobal);
 
             // If a platform is selected, save it too
             if (currentPlatform) {
@@ -1080,7 +1077,7 @@
                 end: document.getElementById('statEnd').value, 
                 rotDetails: document.getElementById('rotDetailText').value 
                 };
-                await db.ref(`ems6/plans/${currentPlatform}/current`).set({ deploys, filter: document.getElementById('filterInput').value.trim(), stats, editor: editorName, updatedAt: new Date().toLocaleString() });
+                await db.ref(`ems3/plans/${currentPlatform}/current`).set({ deploys, filter: document.getElementById('filterInput').value.trim(), stats, editor: editorName, updatedAt: new Date().toLocaleString() });
             }
             
             location.reload();
@@ -1099,7 +1096,7 @@
                 boitesConfig['SELENIUM'] = sum;
             }
 
-            await db.ref('ems6/config/boites').set(boitesConfig);
+            await db.ref('ems3/config/boites').set(boitesConfig);
             if(currentPlatform === plat || (currentPlatform.startsWith(plat + '_'))) {
                 renderDeploys(stateData.deploys);
             }
@@ -1107,8 +1104,30 @@
 
         function openRot() { document.getElementById('rotDetailPanel').style.display = 'block'; }
         function closeRot() { document.getElementById('rotDetailPanel').style.display = 'none'; }
-        function checkAccess() { const k = document.getElementById('accessKey').value; if(k === CONFIG.adminKey || k === CONFIG.superKey) { localStorage.setItem('ems6_key', k); location.reload(); } }
-        function logout() { localStorage.removeItem('ems6_key'); location.reload(); }
+        function checkAccess() { 
+            const k = document.getElementById('accessKey').value; 
+            
+            fetch(CONFIG.authUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password: k })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    localStorage.setItem('ems3_key', 'valid'); // Dummy value just to check existence if needed
+                    localStorage.setItem('ems3_role', data.role);
+                    location.reload();
+                } else {
+                    alert("Access Denied");
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert("Error connecting to Auth Service");
+            });
+        }
+        function logout() { localStorage.removeItem('ems3_key'); localStorage.removeItem('ems3_role'); location.reload(); }
         
         function copyIPs(index, btn) {
             const textarea = document.getElementById(`ips-${index}`);
@@ -1130,12 +1149,6 @@
                 setTimeout(() => { btn.innerText = originalText; btn.classList.replace('bg-emerald-500', 'bg-blue-600'); }, 2000);
             });
         }
-		
-		
-		
-		
-		
-		
 		
     </script>
 </body>
