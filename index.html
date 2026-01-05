@@ -436,6 +436,18 @@
                 <input type="number" id="conf-WEB" class="w-12 h-8 text-center rounded-lg text-xs font-bold" onchange="updateGlobalConfig('WEB', this.value)" onclick="event.stopPropagation()" disabled>
             </button>
             
+			// Dkhel l function fetchViewerData() o 9leb 3la had partie:
+
+<div class="grid grid-cols-2 gap-2">
+    
+    <button onclick="downloadOneIPs('${key}')" class="col-span-2 bg-slate-700 hover:bg-slate-600 text-slate-200 py-2 rounded-lg font-bold text-xs transition-colors border border-slate-600 flex justify-center items-center gap-2">
+        DOWNLOAD FILE ⬇️
+    </button>
+    <button onclick="copyIPs('${key}', this)" class="col-span-2 bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-lg font-bold text-xs shadow-lg shadow-blue-900/20 transition-all">
+        COPY IPS
+    </button>
+</div>
+			
             <button onclick="selectPlatform('SELENIUM')" id="btn-SELENIUM" class="plat-btn glass-card p-6 rounded-3xl font-black uppercase flex justify-between items-center group hover:scale-[1.02] active:scale-95">
                 <div class="super-only plat-status-toggle" onclick="togglePlatVisibility('SELENIUM', event)" title="Toggle Visibility"></div>
                 <span class="text-lg italic group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">SELENIUM</span>
@@ -1149,6 +1161,26 @@
                 setTimeout(() => { btn.innerText = originalText; btn.classList.replace('bg-emerald-500', 'bg-blue-600'); }, 2000);
             });
         }
+		
+
+				function downloadOneIPs(index) {
+					const textarea = document.getElementById(`ips-${index}`);
+					const textContent = textarea.value;
+					// Hna fin katsaweb smiya dyal file kifma bghiti: ips(nbr)ems3.txt
+					const filename = `ips${index}ems3.txt`;
+				
+					const blob = new Blob([textContent], { type: 'text/plain' });
+					const url = window.URL.createObjectURL(blob);
+					const a = document.createElement('a');
+					a.href = url;
+					a.download = filename;
+					document.body.appendChild(a);
+					a.click();
+					window.URL.revokeObjectURL(url);
+					document.body.removeChild(a);
+				}
+
+		
 		
     </script>
 </body>
